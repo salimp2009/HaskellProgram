@@ -1,0 +1,14 @@
+
+# Any log files
+*.log
+
+# vs & vs code directories (in case opened with)
+.vs
+.vscode
+
+# HASKELL related Compile & Binary files 
+*.exe
+*.o
+*.hi
+*.stack-work
+stack.yaml.lock
