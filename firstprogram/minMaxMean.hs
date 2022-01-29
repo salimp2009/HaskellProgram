@@ -10,16 +10,28 @@ readInts s = let ws = words s in map read ws
 -- Maybe is class type like variant using Pattern Matching
 minMax :: Ord a =>[a]-> Maybe(a,a)
 -- Just is capitalized so it can be either Types, Type Constructor or Data Constructors
--- Just is a ctually constructor for Maybe
---h is head and t is tail; head is constructed from the tails; it is kinda of pattern matching which mean the list is not empty
+-- Just is actually constructor for Maybe
 minMax (h:t) = Just $ foldr
-    (\x (min, max)) -> (if x <min then x else min, if x > max then x else max)
+-- h is head , t is tail; it is kinda of pattern matching
+    (\x (min, max) -> (if x <min then x else min, if x > max then x else max))
     (h,h)
     t
 
--- when the list is empty
+-- This is the case when the list is empty
 -- underscore _ mean otherwise or anything; which means if the none of body type does not match
 -- then there is Nothing
 minMax _ = Nothing
 
-main ::IO()
+main :: IO ()
+main = do
+    content <- readFile "number.txt"
+    let values = readInts content
+        count   = length values
+        total   = sum values
+        mean    = fromIntegral total / fromIntegral count
+        range = minMax values 
+    print count
+    print total
+    print mean
+    print range
+
