@@ -25,13 +25,13 @@ minMax _ = Nothing
 main :: IO ()
 main = do
     content <- readFile "number.txt"
-    let values = readInts content
+    let values  = readInts content
         count   = length values
         total   = sum values
         mean    = fromIntegral total / fromIntegral count
-        range = minMax values 
-    print count
-    print total
-    print mean
+        range   = minMax values 
+    print   count
+    print   total
+    print   mean
     print range
 
