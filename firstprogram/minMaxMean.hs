@@ -22,6 +22,7 @@ minMax (h:t) = Just $ foldr
 -- then there is Nothing
 minMax _ = Nothing
 
+
 main :: IO ()
 main = do
     content <- readFile "number.txt"
