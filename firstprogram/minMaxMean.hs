@@ -1,3 +1,5 @@
+module Main (main) where
+
 --readInts is a function has String and result list of integers
 -- readInts has type String that maps to list of Ints
 readInts:: String ->[Int]
@@ -23,13 +25,13 @@ minMax (h:t) = Just $ foldr
 minMax _ = Nothing
 
 
-main :: IO ()
+main :: IO () 
 main = do
     content <- readFile "number.txt"
     let values  = readInts content
         count   = length values
         total   = sum values
-        mean    = fromIntegral total / fromIntegral count
+        mean    = fromIntegral total / fromIntegral count 
         range   = minMax values 
     print   count
     print   total
