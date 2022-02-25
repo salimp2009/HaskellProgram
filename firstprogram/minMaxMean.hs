@@ -1,4 +1,4 @@
-module Main (main) where
+--module Main where
 
 --readInts is a function has String and result list of integers
 -- readInts has type String that maps to list of Ints
@@ -37,4 +37,44 @@ main = do
     print   total
     print   mean
     print range
+
+-- in Haskell each function actually has one argument
+-- when you have more than one arg compiler 
+-- converts those into several functions with one argument
+-- Different Lambda definitions ;
+-- lambda with 2 args means underthehood the 2 function with one arg 
+-- composed together
+-- \x y -> x + y ; 
+-- \x ->\y->x+y
+-- \x -> (\y ->x + y)
+
+-- Other examples of lambdas  / functions;
+-- parenthesizedWord = \s -> "(" ++ s ++ ")"
+
+-- this one has 2 functions ++ is already an operator that takes a list of char and combines
+-- them giving another list of char ; similar to string concaneta ;
+-- here one of the args are given as "(" ; open parens ; these are known as sections
+-- the dot . operator composes functions 
+--parenthesizedWord =("(" ++) . (++ ")")   
+
+-- Other examples of functions
+-- funct x y = show x ++ show y
+-- or you can use as infix ; which means the args will be on either side of the funct
+-- x `funct` y = show x ++ show y
+-- e.g; "aaa" `funct` "bbb" will give you = "\"aaa\"\"bbb\""
+
+
+
+-- Example of using lambdas & maping
+-- parenthesizedWords s = unwords $ map (\s -> "(" ++ s ++ ")") (words s) 
+
+-- during ghci we can use multine to write long commands by using :} to start then hit enter
+-- write functions then finish wirth :}
+
+-- also refer the commands that are include in packages 
+-- https://hoogle.haskell.org/?hoogle=words&scope=set%3Astackage
+-- it is like cpp reference for C++; 
+-- describe the functions shows their declarations / examples
+
+
 
