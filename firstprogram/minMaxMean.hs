@@ -63,7 +63,11 @@ main = do
 -- x `funct` y = show x ++ show y
 -- e.g; "aaa" `funct` "bbb" will give you = "\"aaa\"\"bbb\""
 
-
+-- examples of sections ; which is partial imp. functions
+-- e.g you declare a func that has only one the expected argumnet
+-- leftSection = 5 (`func`)
+-- rightSection = (`func` 5)
+-- e.g usage ; leftSection 6  
 
 -- Example of using lambdas & maping
 -- parenthesizedWords s = unwords $ map (\s -> "(" ++ s ++ ")") (words s) 
