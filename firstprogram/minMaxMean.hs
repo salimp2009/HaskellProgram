@@ -1,4 +1,4 @@
---module Main where
+module Main where
 
 --readInts is a function has String and result list of integers
 -- readInts has type String that maps to list of Ints
@@ -6,7 +6,10 @@ readInts:: String ->[Int]
 -- let allows ws as an argument to function readInts
 -- words applies to s 
 -- let ws intruduces name ws into expression map read ws to right side of in keyword; 
--- which means read string into ws and map to s as form a list of int
+-- which means read string into ws and map read ws into read function and ws converts the string into words 
+-- then all these word will be converted as a list of Int
+-- this is similar to  readInts s = map read words s
+-- could have use a lamda readInts = map read (\s -> words s)
 readInts s = let ws = words s in map read ws
 
 -- Maybe is class type like variant using Pattern Matching
@@ -71,6 +74,22 @@ main = do
 
 -- Example of using lambdas & maping
 -- parenthesizedWords s = unwords $ map (\s -> "(" ++ s ++ ")") (words s) 
+
+-- Example of predicate function less than five
+-- lessThanFive x = x < 5
+
+-- This can be also converted any given variable 
+-- lessThan x y = x < y
+
+-- This can used with ready function filter to filter elements less than five in a list
+-- filter lessThanFive [1..10]  
+
+-- This can also be done with a lambda
+-- filter (\x -> x < 5) [1..10]
+
+-- Example of how filters works
+-- myfilter p xs = [ x | x <- xs, p x]
+
 
 -- during ghci we can use multine to write long commands by using :} to start then hit enter
 -- write functions then finish wirth :}
