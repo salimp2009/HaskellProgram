@@ -74,6 +74,7 @@ main = do
 
 -- Example of using lambdas & maping
 -- parenthesizedWords s = unwords $ map (\s -> "(" ++ s ++ ")") (words s) 
+-- parenthesizedWord s = map (\s -> "(" ++ s ++ ")") (words s) 
 
 -- Example of predicate function less than five
 -- lessThanFive x = x < 5
