@@ -1,5 +1,3 @@
-module Main where
-
 --readInts is a function has String and result list of integers
 -- readInts has type String that maps to list of Ints
 readInts:: String ->[Int]
