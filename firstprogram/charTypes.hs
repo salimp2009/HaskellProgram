@@ -1,4 +1,4 @@
-c0:: Char
+c0::Char
 c0 ='X'
 
 c1:: Char
