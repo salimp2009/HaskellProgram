@@ -1,3 +1,5 @@
+module Main where
+    
 c0::Char
 c0 ='X'
 
