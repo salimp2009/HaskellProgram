@@ -1,7 +1,10 @@
 module Main where
 import Data.List    
 
-formatList :: String -> String ->String -> [String] -> String
+-- operator -> is right associative; so type signature can be written
+-- paranthesis start from right keeping in mind ever function has one
+-- argument and return a type
+formatList :: String -> (String -> (String -> ([String] -> String)))
 formatList start end seperator xs = start ++ intercalate seperator (map show xs) ++ end 
 
 -- this one removes "" around the strings but may not work if input is not String or [Char]
