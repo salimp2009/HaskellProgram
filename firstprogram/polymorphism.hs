@@ -18,6 +18,12 @@ myFold :: (a -> b -> b) -> b-> [a] -> b
 myFold _ b [] = b
 myFold f b (a:as) = myFold f (f a b) as
 
+-- Num a => is constraint that is needed here because (+) type signature
+-- has it and since we constrained our function by using (+) it has to match
+--mySum:: Num a => [a] -> a
+mySum :: [Integer] -> Integer
+mySum = myFold (+) 0
+
 main :: IO ()
 main = do
     print $ myMap show [1..5]
@@ -25,3 +31,4 @@ main = do
     print $ myFilter (>30) [1, 5..45]
     print $ myFold (+) 100 [1..5]
     print $ myFold (\x y-> x * (x+1) + y) 0 [1..5]
+    print $ mySum [10, 20, 30]
