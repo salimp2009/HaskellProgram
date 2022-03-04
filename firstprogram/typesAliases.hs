@@ -21,7 +21,6 @@ main = do
         print n2
         print n3
 
-
 -- to create type aliases ;
 -- this create an Alias Port that is Int
 -- to check use :info

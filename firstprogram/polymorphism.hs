@@ -9,7 +9,6 @@ myMap :: (a -> b)->[a]->[b]
 myMap _ [] = []
 myMap f (a:as) = f a : myMap f as
 
-
 myFilter :: (a-> Bool) -> [a] ->[a]
 myFilter _ [] = []
 myFilter f (a:as) = if  f a then a : myFilter f as else myFilter f as
