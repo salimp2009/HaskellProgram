@@ -21,7 +21,6 @@ instance Num Quaternion where
     fromInteger = undefined
     negate = undefined
 
-
 -- this is manually implementing Show class
 -- show method four our type class; similar to overloading
 -- ostream for a user defined type/class 
