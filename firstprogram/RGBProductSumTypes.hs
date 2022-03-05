@@ -4,4 +4,6 @@ module RGBProductSumTypes where
 data Colour = RGB Int Int Int | CMYK Float Float Float Float deriving Show
 
 
-
+main::IO ()
+main = do
+    print $ RGB 20 30 40

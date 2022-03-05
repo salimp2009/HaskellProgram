@@ -7,3 +7,5 @@ data Colour = RGB
         green :: Int ,
         blue :: Int
     } deriving Show
+
+    

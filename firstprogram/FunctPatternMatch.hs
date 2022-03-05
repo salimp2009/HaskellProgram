@@ -3,8 +3,9 @@ module FunctPatternMatch where
 func x y z = x + y + z
 
 myHead (x:xs) = x
--- this did not work ??
---myHead [] = erro "empty no head"
+-- error is like throwing exception in C++;  
+-- error stops execution and displays an error message.
+myHead [] = error "empty list no head"
 
 isEmpty [] = True
 isEmpty xs = False
@@ -15,3 +16,4 @@ main = do
      print $ myHead [1..10]
      print $ isEmpty []
      print $ isEmpty [1..3]
+    -- print $ myHead []

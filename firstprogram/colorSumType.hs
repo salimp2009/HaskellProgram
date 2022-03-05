@@ -4,4 +4,8 @@
 -- Colour is a type; 
 -- Red, Green, Blue is a data constructor
 -- the | operator mean they are  alternatives
-data Colour = Red | Green | Blue deriving Show
+data Colour = Red Int | Green Int| Blue Int deriving Show
+
+main :: IO ()
+main = do
+        print $ Red 20
