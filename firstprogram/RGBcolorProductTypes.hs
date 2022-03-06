@@ -10,10 +10,19 @@ data Pixel = Pixel Int Int Int Colour
 pixelRed ::Pixel -> Int
 pixelRed (Pixel _ _ _ (RGB r _ _)) = r
 
+pixelGreen ::Pixel -> Int
+pixelGreen = \(Pixel _ _ _ (RGB _ g _)) -> g
+
 -- pattern matching using different function to
 -- access a type classes one of the properties
 red::Colour -> Int
 red (RGB r _ _) = r
+
+-- Alternative pattern matching using lambda
+-- lambdas are not as other pattern matching methods 
+-- especially if it is a sum type
+red2::Colour -> Int
+red2 = \(RGB r _ _) -> r
 
 green::Colour -> Int
 green (RGB _ g _) = g
@@ -27,10 +36,15 @@ main = do
       print $ RGB 10 20 30
       print myColour
       print $ red myColour
+      print $ red2 myColour
       print $ green myColour
       print $ blue myColour
       let myPixel = Pixel 100 100 100 (RGB 10 15 25)
       print $ pixelRed myPixel
+      print $ pixelGreen myPixel
+      
+      
+
 
 
 

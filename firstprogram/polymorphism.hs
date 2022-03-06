@@ -32,3 +32,4 @@ main = do
     print $ myFold (\x y-> x * (x+1) + y) 0 [1..5]
     print $ mySum [10, 20, 30]
 
+
