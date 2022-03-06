@@ -9,3 +9,4 @@ data Colour = Red Int | Green Int| Blue Int deriving Show
 main :: IO ()
 main = do
         print $ Red 20
+        
