@@ -1,5 +1,5 @@
 module Quaternion where
-
+  
 data Quaternion = Q 
     { 
       qR :: Double,
@@ -37,4 +37,4 @@ main :: IO ()
 main = do 
         putStrLn "Quaternion; "
         print $ Q 1 2 3 4 + Q 10 20 30 40
-        
+
