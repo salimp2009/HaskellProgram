@@ -1,7 +1,8 @@
 main :: IO ()
-main = do
-    msg <- getLine 
-    print (greet msg)
+main =  do
+        print "Please enter  your name:"
+        msg <- getLine
+        putStrLn (greet msg)
 
-greeting ="Hello"
+greeting ="Hellow"
 greet who = greeting <> ", " <> who
