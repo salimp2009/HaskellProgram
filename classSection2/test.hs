@@ -20,3 +20,7 @@ add1 = \x -> x + 1
 add' :: Integer -> Integer -> Integer
 add' = (+)
 
+-- type alias
+type Count = Int
+processString::String -> Count
+processString = undefined
