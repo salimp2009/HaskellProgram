@@ -7,8 +7,8 @@ data Expression = Number Int
 
 calculate:: Expression -> Int
 calculate (Number a) = a
-calculate (Add a b ) = (calculate a ) + (calculate b)         
-calculate (Subtract a b ) = (calculate a ) - (calculate b)
+calculate (Add a b ) = calculate a  + calculate b        
+calculate (Subtract a b ) = calculate a - calculate b
 
 newHead :: [p] -> p
 newHead [] = error "Empty list!"
