@@ -10,10 +10,16 @@ calculate (Number a) = a
 calculate (Add a b ) = calculate a  + calculate b        
 calculate (Subtract a b ) = calculate a - calculate b
 
-newHead :: [p] -> p
+newHead :: [a] -> a
 newHead [] = error "Empty list!"
 newHead [a] = a
 newHead (a:as) = a
+
+
+newTail :: [a] -> [a]
+newTail [] = error "Empty List"
+newTail [a] = []
+newTail (a:as) = as 
 
 
 -- Use of calculate 
