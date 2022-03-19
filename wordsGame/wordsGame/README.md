@@ -1,4 +1,4 @@
 # wordsGame
 
-#Haskell Learning Project
+# Haskell Learning Project
 - Built with stack new

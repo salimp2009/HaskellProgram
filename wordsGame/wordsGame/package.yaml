@@ -1,6 +1,6 @@
 name:                wordsGame
 version:             0.1.0.0
-github:              "salimp2009/wordsGame"
+github:              "salimp2009/HaskellProgram/"
 license:             BSD3
 author:              "Salim Pamukcu"
 maintainer:          "salimp2009@gmail.com"
@@ -17,7 +17,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/salimp2009/wordsGame#readme>
+description:         Please see the README on GitHub at <https://github.com/salimp2009/HaskellProgram/tree/master/wordsGame/wordsGame>
 
 dependencies:
 - base >= 4.7 && < 5
@@ -26,7 +26,7 @@ library:
   source-dirs: src
 
 executables:
-  wordsGame-exe:
+  wordsGame:
     main:                Main.hs
     source-dirs:         app
     ghc-options:

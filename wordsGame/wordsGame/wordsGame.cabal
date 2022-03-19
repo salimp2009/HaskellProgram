@@ -6,9 +6,9 @@ cabal-version: 1.12
 
 name:           wordsGame
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/salimp2009/wordsGame#readme>
-homepage:       https://github.com/salimp2009/wordsGame#readme
-bug-reports:    https://github.com/salimp2009/wordsGame/issues
+description:    Please see the README on GitHub at <https://github.com/salimp2009/HaskellProgram/tree/master/wordsGame/wordsGame>
+homepage:       https://github.com/salimp2009/HaskellProgram#readme
+bug-reports:    https://github.com/salimp2009/HaskellProgram/issues
 author:         Salim Pamukcu
 maintainer:     salimp2009@gmail.com
 copyright:      BSD
@@ -21,7 +21,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/salimp2009/wordsGame
+  location: https://github.com/salimp2009/HaskellProgram
 
 library
   exposed-modules:
@@ -34,7 +34,7 @@ library
       base >=4.7 && <5
   default-language: Haskell2010
 
-executable wordsGame-exe
+executable wordsGame
   main-is: Main.hs
   other-modules:
       Paths_wordsGame
