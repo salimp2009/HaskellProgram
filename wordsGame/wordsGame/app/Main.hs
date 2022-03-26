@@ -1,6 +1,6 @@
 module Main where
 
-import Lib
+import Lib --(grid, outputGrid)
 
 main :: IO ()
-main = someFunc   
+main = outputGrid grid  
