@@ -3,26 +3,44 @@ module Lib
     , languages
     , formatGrid
     , outputGrid
+    , findWord
+    , findWordInLine
+    , someString
     ) where
+
+import Data.List (isInfixOf, or)
+
+-- this can be used for function eqString
+-- import GHC.Base
 
 --someFunc :: IO ()
 --someFunc = putStrLn someString
 
-outputGrid::[String] -> IO()
-outputGrid grid = putStrLn $ formatGrid grid
+-- type alias
+type Grid = [String]
 
+outputGrid::Grid -> IO()
+outputGrid grid = putStrLn $ formatGrid grid
 
 someString::String
 someString = "someString"
 
-formatGrid::[String]-> String
+formatGrid::Grid -> String
 formatGrid = unlines
+
+--findWord :: Grid -> String -> Bool
+findWord :: Foldable t => t String -> String -> Bool
+findWord grid word = any (findWordInLine word) grid
+
+findWordInLine::String -> String -> Bool
+findWordInLine = isInfixOf
 
 myUnlines :: [String] -> String
 myUnlines [] = []
 myUnlines (a:as) = a ++'\n' : myUnlines as
 
 -- Started Implementing the grid
+grid :: [String]
 grid = [ "__C________R___"
        , "__SI________U__"
        , "__HASKELL____B_"
