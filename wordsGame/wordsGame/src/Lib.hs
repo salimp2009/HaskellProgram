@@ -29,8 +29,15 @@ formatGrid::Grid -> String
 formatGrid = unlines
 
 --findWord :: Grid -> String -> Bool
-findWord :: Foldable t => t String -> String -> Bool
-findWord grid word = any (findWordInLine word) grid
+
+findWord :: [[Char]] -> String -> Bool
+findWord grid word = 
+        let lines = grid ++ map reverse grid
+        in any (findWordInLine word) lines
+        -- in or $ map (findWordInLine word) lines
+
+-- Original implementation
+-- findWord grid word = or $ map (findWordInLine word) grid
 
 findWordInLine::String -> String -> Bool
 findWordInLine = isInfixOf
