@@ -5,6 +5,7 @@ module Lib
     , outputGrid
     , findWord
     , findWordInLine
+    , findWords
     , someString
     ) where
 
@@ -30,14 +31,25 @@ formatGrid = unlines
 
 --findWord :: Grid -> String -> Bool
 
-findWord :: [[Char]] -> String -> Bool
+findWord :: [[Char]] -> String -> Maybe String
 findWord grid word = 
         let lines = grid ++ map reverse grid
-        in any (findWordInLine word) lines
-        -- in or $ map (findWordInLine word) lines
+            found =  any (findWordInLine word) lines
+        in if found then Just  word else Nothing
 
+-- in or $ map (findWordInLine word) lines
 -- Original implementation
 -- findWord grid word = or $ map (findWordInLine word) grid
+
+-- tried to implement if the first search fails and then does the second 
+-- but this seems less efficient than above
+finWordAlt :: [String] -> String -> Bool
+finWordAlt grid word= or $ map (findWordInLine word) grid ++ map (findWordInLine word .reverse) grid
+
+--findWords::Grid -> [String] -> [Bool]
+findWords :: [[Char]] -> [String] -> [Maybe String]
+findWords grid words = map (findWord grid) words
+
 
 findWordInLine::String -> String -> Bool
 findWordInLine = isInfixOf
@@ -46,7 +58,8 @@ myUnlines :: [String] -> String
 myUnlines [] = []
 myUnlines (a:as) = a ++'\n' : myUnlines as
 
--- Started Implementing the grid
+
+-- Started Implementing the grid1
 grid :: [String]
 grid = [ "__C________R___"
        , "__SI________U__"
