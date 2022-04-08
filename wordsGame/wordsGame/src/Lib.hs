@@ -6,10 +6,13 @@ module Lib
     , findWord
     , findWordInLine
     , findWords
+    , findwordsOrig
     , someString
     ) where
 
 import Data.List (isInfixOf, or)
+import Data.Maybe (mapMaybe, catMaybes)
+
 
 -- this can be used for function eqString
 -- import GHC.Base
@@ -47,8 +50,26 @@ finWordAlt :: [String] -> String -> Bool
 finWordAlt grid word= or $ map (findWordInLine word) grid ++ map (findWordInLine word .reverse) grid
 
 --findWords::Grid -> [String] -> [Bool]
-findWords :: [[Char]] -> [String] -> [Maybe String]
-findWords grid words = map (findWord grid) words
+-- findWords :: [[Char]] -> [String] -> [Maybe String]
+--findWords :: [[Char]] -> [String] -> [String]
+--findWords grid words = catMaybes $ map (findWord grid) words
+
+findWords :: [[Char]] -> [String] -> [String]
+findWords grid = mapMaybe (findWord grid)
+
+findwordsOrig :: [[Char]] -> [String] -> [String]
+findwordsOrig grid words =
+        let foundWords = map (findWord grid) words
+        in catMaybes foundWords  
+
+-- implementation mapMaybe 
+mymapMaybe          :: (a -> Maybe b) -> [a] -> [b]
+mymapMaybe _ []     = []
+mymapMaybe f (x:xs) =
+ let rs = mymapMaybe f xs in
+ case f x of
+  Nothing -> rs
+  Just r  -> r:rs
 
 
 findWordInLine::String -> String -> Bool
