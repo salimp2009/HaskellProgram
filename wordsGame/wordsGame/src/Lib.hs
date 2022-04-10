@@ -26,13 +26,15 @@ type Grid = [String]
 outputGrid::Grid -> IO()
 outputGrid grid = putStrLn $ formatGrid grid
 
+-- Not used any more; it was a test for beginning
 someString::String
 someString = "someString"
 
 formatGrid::Grid -> String
 formatGrid = unlines
 
---findWord :: Grid -> String -> Bool
+findWordInLine::String -> String -> Bool
+findWordInLine = isInfixOf
 
 findWord :: [[Char]] -> String -> Maybe String
 findWord grid word = 
@@ -40,7 +42,18 @@ findWord grid word =
             found =  any (findWordInLine word) lines
         in if found then Just  word else Nothing
 
--- in or $ map (findWordInLine word) lines
+findWords :: [[Char]] -> [String] -> [String]
+findWords grid = mapMaybe (findWord grid)
+
+
+
+-- These are left overs from the first original ; changed to above
+-- findWord :: Grid -> String -> Bool
+-- findWord grid word = 
+--    let lines = grid ++ map reverse grid
+--        found =  any (findWordInLine word) lines
+--    in or $ map (findWordInLine word) lines
+
 -- Original implementation
 -- findWord grid word = or $ map (findWordInLine word) grid
 
@@ -54,15 +67,13 @@ finWordAlt grid word= or $ map (findWordInLine word) grid ++ map (findWordInLine
 --findWords :: [[Char]] -> [String] -> [String]
 --findWords grid words = catMaybes $ map (findWord grid) words
 
-findWords :: [[Char]] -> [String] -> [String]
-findWords grid = mapMaybe (findWord grid)
 
 findwordsOrig :: [[Char]] -> [String] -> [String]
 findwordsOrig grid words =
         let foundWords = map (findWord grid) words
         in catMaybes foundWords  
 
--- implementation mapMaybe 
+-- implementation of mapMaybe 
 mymapMaybe          :: (a -> Maybe b) -> [a] -> [b]
 mymapMaybe _ []     = []
 mymapMaybe f (x:xs) =
@@ -71,9 +82,6 @@ mymapMaybe f (x:xs) =
   Nothing -> rs
   Just r  -> r:rs
 
-
-findWordInLine::String -> String -> Bool
-findWordInLine = isInfixOf
 
 myUnlines :: [String] -> String
 myUnlines [] = []
