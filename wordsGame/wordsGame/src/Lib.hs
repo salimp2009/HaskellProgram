@@ -10,7 +10,7 @@ module Lib
     , someString
     ) where
 
-import Data.List (isInfixOf, or)
+import Data.List (isInfixOf, or, transpose)
 import Data.Maybe (mapMaybe, catMaybes)
 
 
@@ -33,12 +33,19 @@ someString = "someString"
 formatGrid::Grid -> String
 formatGrid = unlines
 
+getLines::Grid -> [String]
+getLines grid = 
+    let horizontal  = grid 
+        vertical   = transpose grid
+        lines = horizontal <> vertical 
+    in  lines  <> map reverse lines
+
 findWordInLine::String -> String -> Bool
 findWordInLine = isInfixOf
 
 findWord :: [[Char]] -> String -> Maybe String
 findWord grid word = 
-        let lines = grid ++ map reverse grid
+        let lines = getLines grid
             found =  any (findWordInLine word) lines
         in if found then Just  word else Nothing
 
