@@ -6,6 +6,7 @@ module Lib
     , findWord
     , findWordInLine
     , findWords
+    , skew
     , findwordsOrig
     , someString
     ) where
@@ -53,6 +54,11 @@ findWords :: [[Char]] -> [String] -> [String]
 findWords grid = mapMaybe (findWord grid)
 
 
+-- skew:: Grid -> [String]
+skew []     = []
+skew (l:ls) = l : skew (map indent ls)
+     where indent line = '_' : line
+
 
 -- These are left overs from the first original ; changed to above
 -- findWord :: Grid -> String -> Bool
@@ -81,7 +87,7 @@ findwordsOrig grid words =
         in catMaybes foundWords  
 
 -- implementation of mapMaybe 
-mymapMaybe          :: (a -> Maybe b) -> [a] -> [b]
+mymapMaybe :: (a -> Maybe b) -> [a] -> [b]
 mymapMaybe _ []     = []
 mymapMaybe f (x:xs) =
  let rs = mymapMaybe f xs in
