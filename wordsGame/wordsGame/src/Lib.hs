@@ -38,9 +38,14 @@ getLines::Grid -> [String]
 getLines grid = 
     let horizontal  = grid 
         vertical    = transpose grid
-        diagonal    = transpose $ skew grid    
-        lines = horizontal <> vertical <> diagonal
+        diagonal    = diagonalize grid
+        diagonal'   = diagonalize $ map reverse grid    
+        lines = horizontal <> vertical <> diagonal <> diagonal'
     in  lines  <> map reverse lines
+
+--diagonalize :: Grid -> Grid 
+diagonalize :: [[Char]] -> [[Char]]
+diagonalize = transpose . skew
 
 findWordInLine::String -> String -> Bool
 findWordInLine = isInfixOf
