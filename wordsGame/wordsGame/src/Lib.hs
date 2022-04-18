@@ -1,7 +1,7 @@
 module Lib
-    ( grid
-    , languages
-    , formatGrid
+    ( --grid
+    --, languages
+      formatGrid
     , outputGrid
     , findWord
     , findWordInLine
@@ -60,7 +60,7 @@ findWords :: [[Char]] -> [String] -> [String]
 findWords grid = mapMaybe (findWord grid)
 
 
--- skew:: Grid -> [String]
+skew:: Grid -> [String]
 skew []     = []
 skew (l:ls) = l : skew (map indent ls)
      where indent line = '_' : line
@@ -92,45 +92,31 @@ findwordsOrig grid words =
         let foundWords = map (findWord grid) words
         in catMaybes foundWords  
 
--- implementation of mapMaybe 
-mymapMaybe :: (a -> Maybe b) -> [a] -> [b]
-mymapMaybe _ []     = []
-mymapMaybe f (x:xs) =
- let rs = mymapMaybe f xs in
- case f x of
-  Nothing -> rs
-  Just r  -> r:rs
 
 
-myUnlines :: [String] -> String
-myUnlines [] = []
-myUnlines (a:as) = a ++'\n' : myUnlines as
+-- grid :: [String]
+-- grid = [ "__C________R___"
+--        , "__SI________U__"
+--        , "__HASKELL____B_"
+--        , "__A__A_____S__Y"
+--        , "__R___B___C____"
+--        , "__PHP____H_____"
+--        , "____S_LREP_____"
+--        , "____I__M_Y__L__"
+--        , "____L_E__T_O___"
+--        , "_________HB____"
+--        , "_________O_____"
+--        , "________CN_____"
+--        ]
 
-
--- Started Implementing the grid1
-grid :: [String]
-grid = [ "__C________R___"
-       , "__SI________U__"
-       , "__HASKELL____B_"
-       , "__A__A_____S__Y"
-       , "__R___B___C____"
-       , "__PHP____H_____"
-       , "____S_LREP_____"
-       , "____I__M_Y__L__"
-       , "____L_E__T_O___"
-       , "_________HB____"
-       , "_________O_____"
-       , "________CN_____"
-       ]
-
-languages = [ "BASIC"
-            , "COBOL"
-            , "CSHARP"
-            , "HASKELL"
-            , "LISP"
-            , "PERL"
-            , "PHP"
-            , "PYTHON"
-            , "RUBY"
-            , "SCHEME"
-            ]
+-- languages = [ "BASIC"
+--             , "COBOL"
+--             , "CSHARP"
+--             , "HASKELL"
+--             , "LISP"
+--             , "PERL"
+--             , "PHP"
+--             , "PYTHON"
+--             , "RUBY"
+--             , "SCHEME"
+--             ]

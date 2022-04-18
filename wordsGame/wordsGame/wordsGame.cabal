@@ -25,7 +25,9 @@ source-repository head
 
 library
   exposed-modules:
+      Data
       Lib
+      Trials
   other-modules:
       Paths_wordsGame
   hs-source-dirs:
