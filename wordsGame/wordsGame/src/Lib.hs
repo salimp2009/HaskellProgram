@@ -15,12 +15,6 @@ import Data.List (isInfixOf, or, transpose)
 import Data.Maybe (mapMaybe, catMaybes)
 
 
--- this can be used for function eqString
--- import GHC.Base
-
---someFunc :: IO ()
---someFunc = putStrLn someString
-
 -- type alias
 type Grid = [String]
 
