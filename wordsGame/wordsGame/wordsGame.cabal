@@ -27,6 +27,7 @@ library
   exposed-modules:
       Data
       Lib
+      TestCode
       Trials
   other-modules:
       Paths_wordsGame
