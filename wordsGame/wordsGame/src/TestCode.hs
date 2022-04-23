@@ -1,4 +1,5 @@
 module TestCode where
+import Control.Monad (guard)
 
 -- this is only for trying ideas before implementing them
 
@@ -16,14 +17,43 @@ coords = [ [(0,0),(0,1),(0,2),(0,3),(0,4),(0,5),(0,6),(0,7)]
 
 
 og:: Show a => [a] -> IO()
-og = putStrLn . unlines  . map show 
+og = putStrLn . unlines  . map show
 
 -- div2 x = x `mod` 2 == 0
-div2 :: p -> Bool
-div2 x = even 2
+
+
+div2 :: Integral a => a -> Bool
+div2  = even
 
 -- this is similar to coords above
--- [(x,y) | x  <- [0..7}, y <- [0..7)]
+
+myCoord = [(x,y) | x  <- [0..7], y <- [0..7]]
+
+coord2 :: (Num a, Num b, Enum a, Enum b) => a -> b -> [[(a, b)]]
+coord2 row col= [[(x,y) |  y<-[0..col]] | x <-[0..row]]  
+
+
+doubleSmallnum :: (Ord a, Num a) => a -> a
+doubleSmallnum x 
+              | x > 100 = x
+              | otherwise = x +x 
+
+mapped :: [Integer]
+mapped = do 
+       i <- [0..9]
+       return (i*2)
+
+filtered :: [Integer]
+filtered = do
+       i <- [0..]
+       guard (div2 i)
+       return i
+
+mappedAndFiltered :: [Integer]
+mappedAndFiltered = do
+       i <- [0..]
+       guard (div2 i)
+       return (i+1)
 
 -- Copy of Data
 grid2 :: [String]
@@ -40,7 +70,7 @@ grid2 = [ "__C________R___"
        , "_________O_____"
        , "________CN_____"
        ]
-    
+
 languages2 = [ "BASIC"
             , "COBOL"
             , "CSHARP"
