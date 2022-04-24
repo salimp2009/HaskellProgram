@@ -1,6 +1,6 @@
 module Trials 
     (    mymapMaybe
-       , myUnlines 
+       , myUnlines
     ) where
 
 -- implementation of mapMaybe 
@@ -16,3 +16,4 @@ mymapMaybe f (x:xs) =
 myUnlines :: [String] -> String
 myUnlines [] = []
 myUnlines (a:as) = a ++'\n' : myUnlines as
+

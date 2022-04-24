@@ -1,5 +1,6 @@
 module TestCode where
 import Control.Monad (guard)
+import GHC.List (errorEmptyList)
 
 -- this is only for trying ideas before implementing them
 
@@ -26,7 +27,6 @@ div2 :: Integral a => a -> Bool
 div2  = even
 
 -- this is similar to coords above
-
 myCoord = [(x,y) | x  <- [0..7], y <- [0..7]]
 
 coord2 :: (Num a, Num b, Enum a, Enum b) => a -> b -> [[(a, b)]]
@@ -54,6 +54,24 @@ mappedAndFiltered = do
        i <- [0..]
        guard (div2 i)
        return (i+1)
+
+
+myzip _ [] = []
+myzip [] _ = []
+myzip (x:xs) (y:ys) = (x,y) : myzip xs ys
+
+mytake :: (Eq a1, Num a1) => a1 -> [a2] -> [a2]
+mytake _ []   = []
+mytake 0 _    = []
+mytake n (x:xs) = x : rest 
+       where rest = mytake (n-1) xs
+
+
+mycycle :: [a] -> [a]
+mycycle [] = errorEmptyList "empty list!"
+mycycle (first : rest) = first : cycle (rest <> [first])
+-- ^ Alternative mycycle
+-- mycycle xs = xs' where xs' = xs <> xs'
 
 -- Copy of Data
 grid2 :: [String]
