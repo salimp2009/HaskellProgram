@@ -44,6 +44,24 @@ doubleSmallnum x
               | x > 100 = x
               | otherwise = x +x 
 
+cols :: [[Integer]]
+cols = repeat [0..]
+
+rows :: [[Integer]]
+rows = map repeat [0..]
+
+repeat8 :: a -> [a]
+repeat8 = replicate 8
+-- repeat8 = take 8 . repeat
+-- ^ original implementation
+
+cols8 :: [[Integer]]
+cols8 = repeat8 [0..7]
+
+rows8 :: [[Integer]]
+rows8 = map repeat8 [0..7]
+
+
 mapped :: [Integer]
 mapped = do 
        i <- [0..9]
