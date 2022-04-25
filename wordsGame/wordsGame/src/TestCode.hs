@@ -32,6 +32,12 @@ myCoord = [(x,y) | x  <- [0..7], y <- [0..7]]
 coord2 :: (Num a, Num b, Enum a, Enum b) => a -> b -> [[(a, b)]]
 coord2 row col= [[(x,y) |  y<-[0..col]] | x <-[0..row]]  
 
+newCoords :: [[(Integer, Integer)]]
+newCoords = do
+       row <- [1..7]
+       return $ do
+        col <- [1..7]
+        return (row,col)
 
 doubleSmallnum :: (Ord a, Num a) => a -> a
 doubleSmallnum x 
