@@ -27,6 +27,7 @@ div2 :: Integral a => a -> Bool
 div2  = even
 
 -- this is similar to coords above
+myCoord :: [(Integer, Integer)]
 myCoord = [(x,y) | x  <- [0..7], y <- [0..7]]
 
 coord2 :: (Num a, Num b, Enum a, Enum b) => a -> b -> [[(a, b)]]
@@ -61,6 +62,11 @@ cols8 = repeat8 [0..7]
 rows8 :: [[Integer]]
 rows8 = map repeat8 [0..7]
 
+zipOverGrid :: [[a]] -> [[b]] -> [[(a, b)]]
+zipOverGrid = zipWith zip
+
+grid' :: [[a]] -> [[b]] -> [[(a, b)]]
+grid' = zipOverGrid
 
 mapped :: [Integer]
 mapped = do 
