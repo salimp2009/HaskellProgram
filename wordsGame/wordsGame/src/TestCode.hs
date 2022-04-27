@@ -21,8 +21,6 @@ og:: Show a => [a] -> IO()
 og = putStrLn . unlines  . map show
 
 -- div2 x = x `mod` 2 == 0
-
-
 div2 :: Integral a => a -> Bool
 div2  = even
 
@@ -51,8 +49,11 @@ cols = repeat [0..]
 rows :: [[Integer]]
 rows = map repeat [0..]
 
+coordsInf :: [[(Integer, Integer)]]
+coordsInf = zipOverGrid rows cols
+
 repeat8 :: a -> [a]
-repeat8 = replicate 8
+repeat8 = replicate 8 
 -- repeat8 = take 8 . repeat
 -- ^ original implementation
 
@@ -86,6 +87,7 @@ mappedAndFiltered = do
        return (i+1)
 
 
+myzip :: [a] -> [b] -> [(a, b)]
 myzip _ [] = []
 myzip [] _ = []
 myzip (x:xs) (y:ys) = (x,y) : myzip xs ys
