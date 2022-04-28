@@ -4,6 +4,8 @@ import GHC.List (errorEmptyList)
 
 -- this is only for trying ideas before implementing them
 
+data Cell = Cell (Integer, Integer) Char deriving (Eq, Ord, Show)
+
 -- sample coordinate grid
 coords :: [[(Integer, Integer)]]
 coords = [ [(0,0),(0,1),(0,2),(0,3),(0,4),(0,5),(0,6),(0,7)]
@@ -51,6 +53,7 @@ rows = map repeat [0..]
 
 coordsInf :: [[(Integer, Integer)]]
 coordsInf = zipOverGrid rows cols
+
 
 repeat8 :: a -> [a]
 repeat8 = replicate 8 
