@@ -69,6 +69,9 @@ rows8 = map repeat8 [0..7]
 zipOverGrid :: [[a]] -> [[b]] -> [[(a, b)]]
 zipOverGrid = zipWith zip
 
+zipOverGridWith :: (a -> b -> c) -> [[a]] -> [[b]] -> [[c]]
+zipOverGridWith = zipWith . zipWith
+
 grid' :: [[a]] -> [[b]] -> [[(a, b)]]
 grid' = zipOverGrid
 

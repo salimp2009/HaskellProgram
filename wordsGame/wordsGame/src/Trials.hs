@@ -18,8 +18,9 @@ data List a = Empty |  List a (List a) deriving (Show)
 
 
 toList:: [a] -> List a
-toList [] = Empty
-toList (a:as) = List a (toList as)
+toList = foldr List Empty
+-- toList (a:as) = List a (toList as)
+-- ^ Original implementation
 
 fromList :: List a -> [a]
 fromList Empty = []
@@ -28,5 +29,5 @@ fromList (List a as) = a : fromList as
 instance Functor List where
   fmap _ Empty = Empty
   fmap f (List a as) = List (f a) (fmap f as)
- 
+
 
