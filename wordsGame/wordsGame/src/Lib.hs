@@ -14,6 +14,20 @@ module Lib
 import Data.List (isInfixOf, or, transpose)
 import Data.Maybe (mapMaybe, catMaybes)
 
+data Cell = Cell (Integer, Integer) Char deriving (Eq, Ord, Show)
+
+zipOverGridWith :: (a -> b -> c) -> [[a]] -> [[b]] -> [[c]]
+zipOverGridWith = zipWith . zipWith
+
+zipOverGrid :: [[a]] -> [[b]] -> [[(a, b)]]
+zipOverGrid = zipWith zip
+
+
+coordsGrid :: [[(Integer, Integer)]]
+coordsGrid =
+    let rows = repeat <$> [0..]
+        cols = repeat [0..]
+    in zipOverGrid rows cols   
 
 -- type alias
 type Grid = [String]
@@ -85,32 +99,3 @@ findwordsOrig :: [[Char]] -> [String] -> [String]
 findwordsOrig grid words =
         let foundWords = map (findWord grid) words
         in catMaybes foundWords  
-
-
-
--- grid :: [String]
--- grid = [ "__C________R___"
---        , "__SI________U__"
---        , "__HASKELL____B_"
---        , "__A__A_____S__Y"
---        , "__R___B___C____"
---        , "__PHP____H_____"
---        , "____S_LREP_____"
---        , "____I__M_Y__L__"
---        , "____L_E__T_O___"
---        , "_________HB____"
---        , "_________O_____"
---        , "________CN_____"
---        ]
-
--- languages = [ "BASIC"
---             , "COBOL"
---             , "CSHARP"
---             , "HASKELL"
---             , "LISP"
---             , "PERL"
---             , "PHP"
---             , "PYTHON"
---             , "RUBY"
---             , "SCHEME"
---             ]

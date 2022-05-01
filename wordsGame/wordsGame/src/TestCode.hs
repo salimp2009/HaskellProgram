@@ -1,10 +1,10 @@
 module TestCode where
-import Control.Monad (guard)
+import Control.Monad (guard, join)
 import GHC.List (errorEmptyList)
 
 -- this is only for trying ideas before implementing them
 
-data Cell = Cell (Integer, Integer) Char deriving (Eq, Ord, Show)
+-- data Cell = Cell (Integer, Integer) Char deriving (Eq, Ord, Show)
 
 -- sample coordinate grid
 coords :: [[(Integer, Integer)]]
@@ -69,11 +69,11 @@ rows8 = map repeat8 [0..7]
 zipOverGrid :: [[a]] -> [[b]] -> [[(a, b)]]
 zipOverGrid = zipWith zip
 
-zipOverGridWith :: (a -> b -> c) -> [[a]] -> [[b]] -> [[c]]
-zipOverGridWith = zipWith . zipWith
+-- zipOverGridWith :: (a -> b -> c) -> [[a]] -> [[b]] -> [[c]]
+-- zipOverGridWith = zipWith . zipWith
 
-grid' :: [[a]] -> [[b]] -> [[(a, b)]]
-grid' = zipOverGrid
+--grid' :: [[a]] -> [[b]] -> [[(a, b)]]
+-- grid' = zipOverGrid
 
 mapped :: [Integer]
 mapped = do 
